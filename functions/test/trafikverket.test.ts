@@ -63,6 +63,12 @@ describe("trafikverket", () => {
     expect(event.endTime).not.toBeNull();
   });
 
+  it("queries Situation 1.6 in the road.trafficinfo namespace with changeid", () => {
+    const xml = buildSituationQuery("key", "123");
+    expect(xml).toContain('objecttype="Situation" namespace="road.trafficinfo" schemaversion="1.6"');
+    expect(xml).toContain('changeid="123"');
+  });
+
   it("escapes the key in the XML query", () => {
     expect(buildSituationQuery('a"b<c', "0")).toContain('authenticationkey="a&#34;b&#60;c"');
   });

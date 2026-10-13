@@ -9,12 +9,13 @@ import { findLan } from "../lib/regions";
  * the previous one; `includedeletedobjects` tells us when a situation has ended.
  * Only currently active situations are available — there is no history to backfill.
  *
- * NOTE: field names follow the published data model (Situation 1.5). Verify against
- * https://data.trafikverket.se/documentation once the key is in place.
+ * Situation lives in the "road.trafficinfo" namespace and only schema 1.6 is
+ * accepted (verified 2026-10-13 with lib/cli/trafikverketProbe.js).
  */
 export const TRAFIKVERKET_API = "https://api.trafikinfo.trafikverket.se/v2/data.json";
 export const TRAFIKVERKET_ATTRIBUTION = "Källa: Trafikverket";
-export const TRAFIKVERKET_SCHEMA_VERSION = "1.5";
+export const TRAFIKVERKET_SCHEMA_VERSION = "1.6";
+export const TRAFIKVERKET_NAMESPACE = "road.trafficinfo";
 
 export interface TrafikverketDeviation {
   Id: string;
@@ -58,7 +59,7 @@ export function buildSituationQuery(apiKey: string, changeId: string): string {
   return [
     "<REQUEST>",
     `  <LOGIN authenticationkey="${escapeXml(apiKey)}" />`,
-    `  <QUERY objecttype="Situation" schemaversion="${TRAFIKVERKET_SCHEMA_VERSION}" changeid="${escapeXml(changeId)}" includedeletedobjects="true" />`,
+    `  <QUERY objecttype="Situation" namespace="${TRAFIKVERKET_NAMESPACE}" schemaversion="${TRAFIKVERKET_SCHEMA_VERSION}" changeid="${escapeXml(changeId)}" includedeletedobjects="true" />`,
     "</REQUEST>",
   ].join("\n");
 }
