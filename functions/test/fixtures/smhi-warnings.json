@@ -1,0 +1,1307 @@
+[
+  {
+    "id": 3122,
+    "normalProbability": true,
+    "event": {
+      "sv": "Risk för vattenbrist",
+      "en": "Risk for water shortage",
+      "code": "WATER_SHORTAGE",
+      "mhoClassification": {
+        "sv": "Hydrologi",
+        "en": "Hydrology",
+        "code": "HYD"
+      }
+    },
+    "descriptions": [],
+    "warningAreas": [
+      {
+        "id": 9873,
+        "approximateStart": "2026-04-20T22:00:00.000Z",
+        "published": "2026-10-12T15:11:05.488Z",
+        "normalProbability": true,
+        "pushNotice": true,
+        "areaName": {
+          "sv": "Skåne län"
+        },
+        "warningLevel": {
+          "sv": "Meddelande",
+          "en": "Message",
+          "code": "MESSAGE"
+        },
+        "eventDescription": {
+          "sv": "Risk för vattenbrist - Grundvatten och vattendrag",
+          "en": "Risk for water shortage - Groundwater and watercourses",
+          "code": "WATERCOURSES_GROUNDWATER_MINOR_MAJOR"
+        },
+        "affectedAreas": [
+          {
+            "id": 12,
+            "sv": "Skåne län",
+            "en": "Skåne County"
+          }
+        ],
+        "descriptions": [
+          {
+            "title": {
+              "sv": "Händelsebeskrivning",
+              "en": "Description of incident",
+              "code": "INCIDENT"
+            },
+            "text": {
+              "sv": "Låga grundvattennivåer. Låga flöden i Rönne å, Helge å, Kävlingeån med biflöden, Almaån, Holjeån samt i vissa känsliga vattendrag i de östra och södra delarna av länet.",
+              "en": "Low groundwater levels. Low flows in rivers Rönne å, Kävlingeån with tributaries, Almaån, Holjeån and in sensitive watercourses in the eastern and southern parts of the county."
+            }
+          },
+          {
+            "title": {
+              "sv": "Vad ska jag tänka på?",
+              "en": "What should I think about?",
+              "code": "AFFECT"
+            },
+            "text": {
+              "sv": "Du som använder kommunalt vatten bör vara uppmärksam på att kommunen kan utfärda restriktioner och uppmana till vattenbesparande åtgärder.\nDu som har enskilt vatten från egen eller delad brunn bör vara sparsam med vattenförbrukningen eftersom låga grundvattennivåer kan minska uttagskapaciteten och försämra vattenkvaliteten.\nVerksamheter och hushåll med enskilt vatten från sjöar eller vattendrag bör vara vaksamma på att låga vattennivåer kan begränsa uttagsmängderna och försämra vattenkvaliteten.\nLåga vattennivåer kan ha negativ påverkan på växt- och djurliv inom jordbruket och i naturen.",
+              "en": "Users of municipal water should be aware that the municipality may impose restrictions and encourage water-saving measures.\nThose receiving water from private or shared wells should be considerate of their water consumption, as low groundwater levels may reduce abstraction capacity and deteriorate water quality.\nBusinesses and households with private water from lakes or rivers should be aware that low water levels may limit the amount of water withdrawn and degrade water quality.\nLow water levels may have a negative impact on plant and animal life in agriculture and in nature."
+            }
+          }
+        ],
+        "area": {
+          "crs": {
+            "type": "name",
+            "properties": {
+              "name": "EPSG:4326"
+            }
+          },
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  14.19253,
+                  55.73408
+                ],
+                [
+                  14.20246,
+                  55.71391
+                ],
+                [
+                  14.2191,
+                  55.69445
+                ],
+                [
+                  14.2607,
+                  55.68035
+                ],
+                [
+                  14.19253,
+                  55.73408
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "en": "Skåne County",
+            "id": 12,
+            "sv": "Skåne län",
+            "code": "SWE_COUNTIES"
+          }
+        },
+        "created": "2026-04-21T09:08:24.221Z"
+      }
+    ]
+  },
+  {
+    "id": 3368,
+    "normalProbability": true,
+    "event": {
+      "sv": "Medelvind till havs",
+      "en": "Wind at sea",
+      "code": "WIND_SEA",
+      "mhoClassification": {
+        "sv": "Meteorologi",
+        "en": "Meteorology",
+        "code": "MET"
+      }
+    },
+    "descriptions": [],
+    "warningAreas": [
+      {
+        "id": 10652,
+        "approximateStart": "2026-10-13T14:00:00.000Z",
+        "approximateEnd": "2026-10-13T20:00:00.000Z",
+        "published": "2026-10-13T07:19:22.116Z",
+        "normalProbability": true,
+        "pushNotice": true,
+        "areaName": {
+          "sv": "Bälten",
+          "en": "The Belts"
+        },
+        "warningLevel": {
+          "sv": "Gul",
+          "en": "Yellow",
+          "code": "YELLOW"
+        },
+        "eventDescription": {
+          "sv": "Kuling 14-17 m/s",
+          "en": "Near gale 14-17 m/s",
+          "code": "GALE_LOW"
+        },
+        "affectedAreas": [
+          {
+            "id": 54,
+            "sv": "Bälten",
+            "en": "The Belts"
+          }
+        ],
+        "descriptions": [
+          {
+            "title": {
+              "sv": "Händelsebeskrivning",
+              "en": "Description of incident",
+              "code": "INCIDENT"
+            },
+            "text": {
+              "sv": "Sent tisdag eftermiddag syd 14-17 m/s. Sent tisdag kväll avtagande.",
+              "en": "Late Tuesday afternoon south 14-17 m/s. Late Tuesday evening decreasing."
+            }
+          },
+          {
+            "title": {
+              "sv": "Vad ska jag tänka på?",
+              "en": "What should I think about?",
+              "code": "AFFECT"
+            },
+            "text": {
+              "sv": "Förbered besättning och fartyg för mycket vind och sjö, och överväg om det är lämpligt att ge sig ut till sjöss.\nTänk på att byvinden ofta är betydligt högre än medelvinden.",
+              "en": "Pay close attention to the marine forecast and prepare crew and vessel for high winds and seas.\nKeep in mind that the wind gusts are often significantly higher than the average wind."
+            }
+          },
+          {
+            "title": {
+              "sv": "Var?",
+              "en": "Where?",
+              "code": "WHERE"
+            },
+            "text": {
+              "sv": "Bälten",
+              "en": "The Belts"
+            }
+          }
+        ],
+        "area": {
+          "crs": {
+            "type": "name",
+            "properties": {
+              "name": "EPSG:4326"
+            }
+          },
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  12.16597,
+                  54.99669
+                ],
+                [
+                  12.17962,
+                  54.96888
+                ],
+                [
+                  12.14112,
+                  54.94918
+                ],
+                [
+                  12.11403,
+                  54.92127
+                ],
+                [
+                  12.16597,
+                  54.99669
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "en": "The Belts",
+            "id": 54,
+            "sv": "Bälten",
+            "code": "SWE_SEA_DISTRICTS"
+          }
+        },
+        "created": "2026-10-12T07:26:57.486Z"
+      },
+      {
+        "id": 10653,
+        "approximateStart": "2026-10-13T14:00:00.000Z",
+        "approximateEnd": "2026-10-14T09:00:00.000Z",
+        "published": "2026-10-13T07:19:22.117Z",
+        "normalProbability": true,
+        "pushNotice": true,
+        "areaName": {
+          "sv": "Kattegatt",
+          "en": "Kattegat"
+        },
+        "warningLevel": {
+          "sv": "Gul",
+          "en": "Yellow",
+          "code": "YELLOW"
+        },
+        "eventDescription": {
+          "sv": "Kuling 14-17 m/s",
+          "en": "Near gale 14-17 m/s",
+          "code": "GALE_LOW"
+        },
+        "affectedAreas": [
+          {
+            "id": 56,
+            "sv": "Kattegatt",
+            "en": "Kattegat"
+          }
+        ],
+        "descriptions": [
+          {
+            "title": {
+              "sv": "Händelsebeskrivning",
+              "en": "Description of incident",
+              "code": "INCIDENT"
+            },
+            "text": {
+              "sv": "Sent tisdag eftermiddag syd 14-17 m/s. Onsdag förmiddag nordväst. Onsdag förmiddag avtagande.",
+              "en": "Late Tuesday afternoon south 14-17 m/s. Wednesday late morning northwest. Wednesday late morning decreasing."
+            }
+          },
+          {
+            "title": {
+              "sv": "Vad ska jag tänka på?",
+              "en": "What should I think about?",
+              "code": "AFFECT"
+            },
+            "text": {
+              "sv": "Förbered besättning och fartyg för mycket vind och sjö, och överväg om det är lämpligt att ge sig ut till sjöss.\nTänk på att byvinden ofta är betydligt högre än medelvinden.",
+              "en": "Pay close attention to the marine forecast and prepare crew and vessel for high winds and seas.\nKeep in mind that the wind gusts are often significantly higher than the average wind."
+            }
+          },
+          {
+            "title": {
+              "sv": "Var?",
+              "en": "Where?",
+              "code": "WHERE"
+            },
+            "text": {
+              "sv": "Kattegatt",
+              "en": "Kattegat"
+            }
+          }
+        ],
+        "area": {
+          "crs": {
+            "type": "name",
+            "properties": {
+              "name": "EPSG:4326"
+            }
+          },
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  10.65327,
+                  57.74298
+                ],
+                [
+                  11.75164,
+                  57.9609
+                ],
+                [
+                  11.73421,
+                  57.9503
+                ],
+                [
+                  11.71663,
+                  57.91618
+                ],
+                [
+                  10.65327,
+                  57.74298
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "en": "Kattegat",
+            "id": 56,
+            "sv": "Kattegatt",
+            "code": "SWE_SEA_DISTRICTS"
+          }
+        },
+        "created": "2026-10-12T07:26:57.486Z"
+      },
+      {
+        "id": 10654,
+        "approximateStart": "2026-10-13T10:00:00.000Z",
+        "approximateEnd": "2026-10-14T08:00:00.000Z",
+        "published": "2026-10-13T10:46:11.795Z",
+        "normalProbability": true,
+        "pushNotice": false,
+        "areaName": {
+          "sv": "Skagerrak",
+          "en": "Skagerrak"
+        },
+        "warningLevel": {
+          "sv": "Gul",
+          "en": "Yellow",
+          "code": "YELLOW"
+        },
+        "eventDescription": {
+          "sv": "Kuling 14-17 m/s",
+          "en": "Near gale 14-17 m/s",
+          "code": "GALE_LOW"
+        },
+        "affectedAreas": [
+          {
+            "id": 57,
+            "sv": "Skagerrak",
+            "en": "Skagerrak"
+          }
+        ],
+        "descriptions": [
+          {
+            "title": {
+              "sv": "Händelsebeskrivning",
+              "en": "Description of incident",
+              "code": "INCIDENT"
+            },
+            "text": {
+              "sv": "Sydost 14-17 m/s. Onsdag morgon nordväst. Onsdag förmiddag avtagande.",
+              "en": "Southeast 14-17 m/s. Wednesday morning northwest. Wednesday late morning decreasing."
+            }
+          },
+          {
+            "title": {
+              "sv": "Vad ska jag tänka på?",
+              "en": "What should I think about?",
+              "code": "AFFECT"
+            },
+            "text": {
+              "sv": "Förbered besättning och fartyg för mycket vind och sjö, och överväg om det är lämpligt att ge sig ut till sjöss.\nTänk på att byvinden ofta är betydligt högre än medelvinden.",
+              "en": "Pay close attention to the marine forecast and prepare crew and vessel for high winds and seas.\nKeep in mind that the wind gusts are often significantly higher than the average wind."
+            }
+          },
+          {
+            "title": {
+              "sv": "Var?",
+              "en": "Where?",
+              "code": "WHERE"
+            },
+            "text": {
+              "sv": "Skagerrak",
+              "en": "Skagerrak"
+            }
+          }
+        ],
+        "area": {
+          "crs": {
+            "type": "name",
+            "properties": {
+              "name": "EPSG:4326"
+            }
+          },
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  11.75164,
+                  57.9609
+                ],
+                [
+                  10.65327,
+                  57.74298
+                ],
+                [
+                  10.64057,
+                  57.74554
+                ],
+                [
+                  10.62685,
+                  57.74853
+                ],
+                [
+                  11.75164,
+                  57.9609
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "en": "Skagerrak",
+            "id": 57,
+            "sv": "Skagerrak",
+            "code": "SWE_SEA_DISTRICTS"
+          }
+        },
+        "created": "2026-10-12T07:26:57.486Z"
+      },
+      {
+        "id": 10658,
+        "approximateStart": "2026-10-13T22:00:00.000Z",
+        "approximateEnd": "2026-10-14T22:00:00.000Z",
+        "published": "2026-10-13T07:19:22.117Z",
+        "normalProbability": true,
+        "pushNotice": true,
+        "areaName": {
+          "sv": "Norra Östersjön",
+          "en": "Northern Baltic"
+        },
+        "warningLevel": {
+          "sv": "Gul",
+          "en": "Yellow",
+          "code": "YELLOW"
+        },
+        "eventDescription": {
+          "sv": "Kuling 14-17 m/s",
+          "en": "Near gale 14-17 m/s",
+          "code": "GALE_LOW"
+        },
+        "affectedAreas": [
+          {
+            "id": 48,
+            "sv": "Norra Östersjön",
+            "en": "Northern Baltic"
+          }
+        ],
+        "descriptions": [
+          {
+            "title": {
+              "sv": "Händelsebeskrivning",
+              "en": "Description of incident",
+              "code": "INCIDENT"
+            },
+            "text": {
+              "sv": "Natt mot onsdag syd eller sydost 14-17 m/s.",
+              "en": "Night to Wednesday south-southeast 14-17 m/s."
+            }
+          },
+          {
+            "title": {
+              "sv": "Vad ska jag tänka på?",
+              "en": "What should I think about?",
+              "code": "AFFECT"
+            },
+            "text": {
+              "sv": "Förbered besättning och fartyg för mycket vind och sjö, och överväg om det är lämpligt att ge sig ut till sjöss.\nTänk på att byvinden ofta är betydligt högre än medelvinden.",
+              "en": "Pay close attention to the marine forecast and prepare crew and vessel for high winds and seas.\nKeep in mind that the wind gusts are often significantly higher than the average wind."
+            }
+          },
+          {
+            "title": {
+              "sv": "Var?",
+              "en": "Where?",
+              "code": "WHERE"
+            },
+            "text": {
+              "sv": "Norra Östersjön",
+              "en": "Northern Baltic"
+            }
+          }
+        ],
+        "area": {
+          "crs": {
+            "type": "name",
+            "properties": {
+              "name": "EPSG:4326"
+            }
+          },
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  19.0864,
+                  59.73366
+                ],
+                [
+                  19.0864,
+                  59.77626
+                ],
+                [
+                  19.13568,
+                  59.8007
+                ],
+                [
+                  19.15565,
+                  59.83185
+                ],
+                [
+                  19.0864,
+                  59.73366
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "en": "Northern Baltic",
+            "id": 48,
+            "sv": "Norra Östersjön",
+            "code": "SWE_SEA_DISTRICTS"
+          }
+        },
+        "created": "2026-10-12T20:06:23.686Z"
+      },
+      {
+        "id": 10659,
+        "approximateStart": "2026-10-13T21:00:00.000Z",
+        "approximateEnd": "2026-10-14T16:00:00.000Z",
+        "published": "2026-10-13T07:19:22.117Z",
+        "normalProbability": true,
+        "pushNotice": true,
+        "areaName": {
+          "sv": "Mellersta Östersjön",
+          "en": "Central Baltic"
+        },
+        "warningLevel": {
+          "sv": "Gul",
+          "en": "Yellow",
+          "code": "YELLOW"
+        },
+        "eventDescription": {
+          "sv": "Kuling 14-17 m/s",
+          "en": "Near gale 14-17 m/s",
+          "code": "GALE_LOW"
+        },
+        "affectedAreas": [
+          {
+            "id": 49,
+            "sv": "Mellersta Östersjön",
+            "en": "Central Baltic"
+          }
+        ],
+        "descriptions": [
+          {
+            "title": {
+              "sv": "Händelsebeskrivning",
+              "en": "Description of incident",
+              "code": "INCIDENT"
+            },
+            "text": {
+              "sv": "Sent tisdag kväll syd 14-17 m/s. Onsdag kväll avtagande.",
+              "en": "Late Tuesday evening south 14-17 m/s. Wednesday evening decreasing."
+            }
+          },
+          {
+            "title": {
+              "sv": "Vad ska jag tänka på?",
+              "en": "What should I think about?",
+              "code": "AFFECT"
+            },
+            "text": {
+              "sv": "Förbered besättning och fartyg för mycket vind och sjö, och överväg om det är lämpligt att ge sig ut till sjöss.\nTänk på att byvinden ofta är betydligt högre än medelvinden.",
+              "en": "Pay close attention to the marine forecast and prepare crew and vessel for high winds and seas.\nKeep in mind that the wind gusts are often significantly higher than the average wind."
+            }
+          },
+          {
+            "title": {
+              "sv": "Var?",
+              "en": "Where?",
+              "code": "WHERE"
+            },
+            "text": {
+              "sv": "Mellersta Östersjön",
+              "en": "Central Baltic"
+            }
+          }
+        ],
+        "area": {
+          "crs": {
+            "type": "name",
+            "properties": {
+              "name": "EPSG:4326"
+            }
+          },
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  16.7808,
+                  58.1086
+                ],
+                [
+                  16.80462,
+                  58.1165
+                ],
+                [
+                  16.82864,
+                  58.12192
+                ],
+                [
+                  16.83944,
+                  58.12885
+                ],
+                [
+                  16.7808,
+                  58.1086
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "en": "Central Baltic",
+            "id": 49,
+            "sv": "Mellersta Östersjön",
+            "code": "SWE_SEA_DISTRICTS"
+          }
+        },
+        "created": "2026-10-12T20:06:23.686Z"
+      },
+      {
+        "id": 10662,
+        "approximateStart": "2026-10-14T08:00:00.000Z",
+        "approximateEnd": "2026-10-14T17:00:00.000Z",
+        "published": "2026-10-13T10:46:11.796Z",
+        "normalProbability": true,
+        "pushNotice": false,
+        "areaName": {
+          "sv": "Södra Bottenhavet",
+          "en": "Southern Sea of Bothnia"
+        },
+        "warningLevel": {
+          "sv": "Gul",
+          "en": "Yellow",
+          "code": "YELLOW"
+        },
+        "eventDescription": {
+          "sv": "Kuling 14-17 m/s",
+          "en": "Near gale 14-17 m/s",
+          "code": "GALE_LOW"
+        },
+        "affectedAreas": [
+          {
+            "id": 44,
+            "sv": "Södra Bottenhavet",
+            "en": "Southern Sea of Bothnia"
+          }
+        ],
+        "descriptions": [
+          {
+            "title": {
+              "sv": "Händelsebeskrivning",
+              "en": "Description of incident",
+              "code": "INCIDENT"
+            },
+            "text": {
+              "sv": "Onsdag förmiddag nord eller nordväst 14-17 m/s. Onsdag kväll avtagande.",
+              "en": "Wednesday late morning north-northwest 14-17 m/s. Wednesday evening decreasing."
+            }
+          },
+          {
+            "title": {
+              "sv": "Vad ska jag tänka på?",
+              "en": "What should I think about?",
+              "code": "AFFECT"
+            },
+            "text": {
+              "sv": "Förbered besättning och fartyg för mycket vind och sjö, och överväg om det är lämpligt att ge sig ut till sjöss.\nTänk på att byvinden ofta är betydligt högre än medelvinden.",
+              "en": "Pay close attention to the marine forecast and prepare crew and vessel for high winds and seas.\nKeep in mind that the wind gusts are often significantly higher than the average wind."
+            }
+          },
+          {
+            "title": {
+              "sv": "Var?",
+              "en": "Where?",
+              "code": "WHERE"
+            },
+            "text": {
+              "sv": "Södra Bottenhavet",
+              "en": "Southern Sea of Bothnia"
+            }
+          }
+        ],
+        "area": {
+          "crs": {
+            "type": "name",
+            "properties": {
+              "name": "EPSG:4326"
+            }
+          },
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  17.33201,
+                  60.74887
+                ],
+                [
+                  17.34462,
+                  60.75104
+                ],
+                [
+                  17.3434,
+                  60.80818
+                ],
+                [
+                  17.31488,
+                  60.85343
+                ],
+                [
+                  17.33201,
+                  60.74887
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "en": "Southern Sea of Bothnia",
+            "id": 44,
+            "sv": "Södra Bottenhavet",
+            "code": "SWE_SEA_DISTRICTS"
+          }
+        },
+        "created": "2026-10-13T07:19:22.117Z"
+      },
+      {
+        "id": 10663,
+        "approximateStart": "2026-10-14T15:00:00.000Z",
+        "approximateEnd": "2026-10-14T18:00:00.000Z",
+        "published": "2026-10-13T07:19:22.117Z",
+        "normalProbability": true,
+        "pushNotice": true,
+        "areaName": {
+          "sv": "Ålands hav",
+          "en": "Sea of Aaland"
+        },
+        "warningLevel": {
+          "sv": "Gul",
+          "en": "Yellow",
+          "code": "YELLOW"
+        },
+        "eventDescription": {
+          "sv": "Kuling 14-17 m/s",
+          "en": "Near gale 14-17 m/s",
+          "code": "GALE_LOW"
+        },
+        "affectedAreas": [
+          {
+            "id": 45,
+            "sv": "Ålands hav",
+            "en": "Sea of Aaland"
+          }
+        ],
+        "descriptions": [
+          {
+            "title": {
+              "sv": "Händelsebeskrivning",
+              "en": "Description of incident",
+              "code": "INCIDENT"
+            },
+            "text": {
+              "sv": "Sent onsdag eftermiddag nordväst eller nord 14-17 m/s. Onsdag kväll avtagande.",
+              "en": "Late Wednesday afternoon northwest-north 14-17 m/s. Wednesday evening decreasing."
+            }
+          },
+          {
+            "title": {
+              "sv": "Vad ska jag tänka på?",
+              "en": "What should I think about?",
+              "code": "AFFECT"
+            },
+            "text": {
+              "sv": "Förbered besättning och fartyg för mycket vind och sjö, och överväg om det är lämpligt att ge sig ut till sjöss.\nTänk på att byvinden ofta är betydligt högre än medelvinden.",
+              "en": "Pay close attention to the marine forecast and prepare crew and vessel for high winds and seas.\nKeep in mind that the wind gusts are often significantly higher than the average wind."
+            }
+          },
+          {
+            "title": {
+              "sv": "Var?",
+              "en": "Where?",
+              "code": "WHERE"
+            },
+            "text": {
+              "sv": "Ålands hav",
+              "en": "Sea of Aaland"
+            }
+          }
+        ],
+        "area": {
+          "crs": {
+            "type": "name",
+            "properties": {
+              "name": "EPSG:4326"
+            }
+          },
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  18.35554,
+                  60.35768
+                ],
+                [
+                  18.33633,
+                  60.35875
+                ],
+                [
+                  18.30827,
+                  60.36209
+                ],
+                [
+                  18.25577,
+                  60.37841
+                ],
+                [
+                  18.35554,
+                  60.35768
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "en": "Sea of Aaland",
+            "id": 45,
+            "sv": "Ålands hav",
+            "code": "SWE_SEA_DISTRICTS"
+          }
+        },
+        "created": "2026-10-13T07:19:22.117Z"
+      },
+      {
+        "id": 10664,
+        "approximateStart": "2026-10-14T06:00:00.000Z",
+        "approximateEnd": "2026-10-14T11:00:00.000Z",
+        "published": "2026-10-13T07:19:22.117Z",
+        "normalProbability": true,
+        "pushNotice": true,
+        "areaName": {
+          "sv": "Skärgårdshavet",
+          "en": "Archipelago Sea"
+        },
+        "warningLevel": {
+          "sv": "Gul",
+          "en": "Yellow",
+          "code": "YELLOW"
+        },
+        "eventDescription": {
+          "sv": "Kuling 14-17 m/s",
+          "en": "Near gale 14-17 m/s",
+          "code": "GALE_LOW"
+        },
+        "affectedAreas": [
+          {
+            "id": 46,
+            "sv": "Skärgårdshavet",
+            "en": "Archipelago Sea"
+          }
+        ],
+        "descriptions": [
+          {
+            "title": {
+              "sv": "Händelsebeskrivning",
+              "en": "Description of incident",
+              "code": "INCIDENT"
+            },
+            "text": {
+              "sv": "Onsdag morgon syd eller sydost 14-17 m/s. Onsdag eftermiddag avtagande.",
+              "en": "Wednesday morning south-southeast 14-17 m/s. Wednesday afternoon decreasing."
+            }
+          },
+          {
+            "title": {
+              "sv": "Vad ska jag tänka på?",
+              "en": "What should I think about?",
+              "code": "AFFECT"
+            },
+            "text": {
+              "sv": "Förbered besättning och fartyg för mycket vind och sjö, och överväg om det är lämpligt att ge sig ut till sjöss.\nTänk på att byvinden ofta är betydligt högre än medelvinden.",
+              "en": "Pay close attention to the marine forecast and prepare crew and vessel for high winds and seas.\nKeep in mind that the wind gusts are often significantly higher than the average wind."
+            }
+          },
+          {
+            "title": {
+              "sv": "Var?",
+              "en": "Where?",
+              "code": "WHERE"
+            },
+            "text": {
+              "sv": "Skärgårdshavet",
+              "en": "Archipelago Sea"
+            }
+          }
+        ],
+        "area": {
+          "crs": {
+            "type": "name",
+            "properties": {
+              "name": "EPSG:4326"
+            }
+          },
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  21.80586,
+                  60.4729
+                ],
+                [
+                  21.82265,
+                  60.46451
+                ],
+                [
+                  21.86501,
+                  60.493
+                ],
+                [
+                  21.86501,
+                  60.52816
+                ],
+                [
+                  21.80586,
+                  60.4729
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "en": "Archipelago Sea",
+            "id": 46,
+            "sv": "Skärgårdshavet",
+            "code": "SWE_SEA_DISTRICTS"
+          }
+        },
+        "created": "2026-10-13T07:19:22.117Z"
+      },
+      {
+        "id": 10665,
+        "approximateStart": "2026-10-14T10:00:00.000Z",
+        "approximateEnd": "2026-10-14T13:00:00.000Z",
+        "published": "2026-10-13T07:19:22.117Z",
+        "normalProbability": true,
+        "pushNotice": true,
+        "areaName": {
+          "sv": "Rigabukten",
+          "en": "Gulf of Riga"
+        },
+        "warningLevel": {
+          "sv": "Gul",
+          "en": "Yellow",
+          "code": "YELLOW"
+        },
+        "eventDescription": {
+          "sv": "Kuling 14-17 m/s",
+          "en": "Near gale 14-17 m/s",
+          "code": "GALE_LOW"
+        },
+        "affectedAreas": [
+          {
+            "id": 50,
+            "sv": "Rigabukten",
+            "en": "Gulf of Riga"
+          }
+        ],
+        "descriptions": [
+          {
+            "title": {
+              "sv": "Händelsebeskrivning",
+              "en": "Description of incident",
+              "code": "INCIDENT"
+            },
+            "text": {
+              "sv": "Onsdag eftermiddag syd eller sydost 14-17 m/s. Onsdag eftermiddag avtagande.",
+              "en": "Wednesday afternoon south-southeast 14-17 m/s. Wednesday afternoon decreasing."
+            }
+          },
+          {
+            "title": {
+              "sv": "Vad ska jag tänka på?",
+              "en": "What should I think about?",
+              "code": "AFFECT"
+            },
+            "text": {
+              "sv": "Förbered besättning och fartyg för mycket vind och sjö, och överväg om det är lämpligt att ge sig ut till sjöss.\nTänk på att byvinden ofta är betydligt högre än medelvinden.",
+              "en": "Pay close attention to the marine forecast and prepare crew and vessel for high winds and seas.\nKeep in mind that the wind gusts are often significantly higher than the average wind."
+            }
+          },
+          {
+            "title": {
+              "sv": "Var?",
+              "en": "Where?",
+              "code": "WHERE"
+            },
+            "text": {
+              "sv": "Rigabukten",
+              "en": "Gulf of Riga"
+            }
+          }
+        ],
+        "area": {
+          "crs": {
+            "type": "name",
+            "properties": {
+              "name": "EPSG:4326"
+            }
+          },
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  22.21731,
+                  58.06379
+                ],
+                [
+                  22.24274,
+                  58.10784
+                ],
+                [
+                  22.24466,
+                  58.14675
+                ],
+                [
+                  22.26843,
+                  58.18003
+                ],
+                [
+                  22.21731,
+                  58.06379
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "en": "Gulf of Riga",
+            "id": 50,
+            "sv": "Rigabukten",
+            "code": "SWE_SEA_DISTRICTS"
+          }
+        },
+        "created": "2026-10-13T07:19:22.117Z"
+      },
+      {
+        "id": 10666,
+        "approximateStart": "2026-10-14T00:00:00.000Z",
+        "approximateEnd": "2026-10-14T13:00:00.000Z",
+        "published": "2026-10-13T10:46:11.796Z",
+        "normalProbability": true,
+        "pushNotice": false,
+        "areaName": {
+          "sv": "Sydöstra Östersjön",
+          "en": "Southeastern Baltic"
+        },
+        "warningLevel": {
+          "sv": "Gul",
+          "en": "Yellow",
+          "code": "YELLOW"
+        },
+        "eventDescription": {
+          "sv": "Kuling 14-17 m/s",
+          "en": "Near gale 14-17 m/s",
+          "code": "GALE_LOW"
+        },
+        "affectedAreas": [
+          {
+            "id": 51,
+            "sv": "Sydöstra Östersjön",
+            "en": "Southeastern Baltic"
+          }
+        ],
+        "descriptions": [
+          {
+            "title": {
+              "sv": "Händelsebeskrivning",
+              "en": "Description of incident",
+              "code": "INCIDENT"
+            },
+            "text": {
+              "sv": "Natt mot onsdag sydväst 14-17 m/s. Onsdag eftermiddag avtagande.",
+              "en": "Night to Wednesday southwest 14-17 m/s. Wednesday afternoon decreasing."
+            }
+          },
+          {
+            "title": {
+              "sv": "Vad ska jag tänka på?",
+              "en": "What should I think about?",
+              "code": "AFFECT"
+            },
+            "text": {
+              "sv": "Förbered besättning och fartyg för mycket vind och sjö, och överväg om det är lämpligt att ge sig ut till sjöss.\nTänk på att byvinden ofta är betydligt högre än medelvinden.",
+              "en": "Pay close attention to the marine forecast and prepare crew and vessel for high winds and seas.\nKeep in mind that the wind gusts are often significantly higher than the average wind."
+            }
+          },
+          {
+            "title": {
+              "sv": "Var?",
+              "en": "Where?",
+              "code": "WHERE"
+            },
+            "text": {
+              "sv": "Sydöstra Östersjön",
+              "en": "Southeastern Baltic"
+            }
+          }
+        ],
+        "area": {
+          "crs": {
+            "type": "name",
+            "properties": {
+              "name": "EPSG:4326"
+            }
+          },
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  20.97639,
+                  56.29807
+                ],
+                [
+                  20.98009,
+                  56.27862
+                ],
+                [
+                  20.97609,
+                  56.22433
+                ],
+                [
+                  20.99132,
+                  56.16355
+                ],
+                [
+                  20.97639,
+                  56.29807
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "en": "Southeastern Baltic",
+            "id": 51,
+            "sv": "Sydöstra Östersjön",
+            "code": "SWE_SEA_DISTRICTS"
+          }
+        },
+        "created": "2026-10-13T07:19:22.117Z"
+      },
+      {
+        "id": 10667,
+        "approximateStart": "2026-10-13T20:00:00.000Z",
+        "approximateEnd": "2026-10-14T07:00:00.000Z",
+        "published": "2026-10-13T10:46:11.796Z",
+        "normalProbability": true,
+        "pushNotice": false,
+        "areaName": {
+          "sv": "Södra Östersjön",
+          "en": "Southern Baltic"
+        },
+        "warningLevel": {
+          "sv": "Gul",
+          "en": "Yellow",
+          "code": "YELLOW"
+        },
+        "eventDescription": {
+          "sv": "Kuling 14-17 m/s",
+          "en": "Near gale 14-17 m/s",
+          "code": "GALE_LOW"
+        },
+        "affectedAreas": [
+          {
+            "id": 52,
+            "sv": "Södra Östersjön",
+            "en": "Southern Baltic"
+          }
+        ],
+        "descriptions": [
+          {
+            "title": {
+              "sv": "Händelsebeskrivning",
+              "en": "Description of incident",
+              "code": "INCIDENT"
+            },
+            "text": {
+              "sv": "Sent tisdag kväll syd eller sydväst 14-17 m/s. Onsdag förmiddag avtagande.",
+              "en": "Late Tuesday evening south-southwest 14-17 m/s. Wednesday late morning decreasing."
+            }
+          },
+          {
+            "title": {
+              "sv": "Vad ska jag tänka på?",
+              "en": "What should I think about?",
+              "code": "AFFECT"
+            },
+            "text": {
+              "sv": "Förbered besättning och fartyg för mycket vind och sjö, och överväg om det är lämpligt att ge sig ut till sjöss.\nTänk på att byvinden ofta är betydligt högre än medelvinden.",
+              "en": "Pay close attention to the marine forecast and prepare crew and vessel for high winds and seas.\nKeep in mind that the wind gusts are often significantly higher than the average wind."
+            }
+          },
+          {
+            "title": {
+              "sv": "Var?",
+              "en": "Where?",
+              "code": "WHERE"
+            },
+            "text": {
+              "sv": "Södra Östersjön",
+              "en": "Southern Baltic"
+            }
+          }
+        ],
+        "area": {
+          "crs": {
+            "type": "name",
+            "properties": {
+              "name": "EPSG:4326"
+            }
+          },
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  15.28766,
+                  56.12696
+                ],
+                [
+                  15.31288,
+                  56.12004
+                ],
+                [
+                  15.37208,
+                  56.11861
+                ],
+                [
+                  15.37318,
+                  56.11886
+                ],
+                [
+                  15.28766,
+                  56.12696
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "en": "Southern Baltic",
+            "id": 52,
+            "sv": "Södra Östersjön",
+            "code": "SWE_SEA_DISTRICTS"
+          }
+        },
+        "created": "2026-10-13T07:19:22.117Z"
+      }
+    ]
+  }
+]

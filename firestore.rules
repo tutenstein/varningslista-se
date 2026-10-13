@@ -1,0 +1,23 @@
+rules_version = '2';
+
+// Only Cloud Functions (Admin SDK, bypasses rules) write data.
+// Clients may read the public collections; everything else is closed.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /events/{eventId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Public source status ("last observed" per source, coverage page).
+    match /sources/{sourceId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // ingest_state, raw_events and anything else: no client access.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
