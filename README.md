@@ -9,7 +9,7 @@ kendi veritabanımızda (Firestore) biriktiren servis. Ön yüz sonraki aşamada
 ## Yapı
 
 ```
-functions/              Cloud Functions (TypeScript, Node 22, europe-north1)
+functions/              Cloud Functions (TypeScript, Node 22, europe-west1; Firestore europe-north1)
   src/sources/          Kaynak başına çekme + normalleştirme (polisen, smhi, trafikverket)
   src/jobs.ts           Backfill, canlı çekme, bitmiş olayları kapatma
   src/index.ts          Zamanlanmış fonksiyonlar

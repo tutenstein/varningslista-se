@@ -2,6 +2,8 @@
 
 Durum (2026-10-13):
 - ✅ Firebase projesi oluşturuldu: **`varningslista-se`** (hesap: slhmtnn06@gmail.com)
+- ✅ Blaze, Firestore `(default)` europe-north1, Trafikverket anahtarı (Secret Manager)
+- ℹ️ Fonksiyonlar **europe-west1**'de çalışıyor, çünkü Cloud Scheduler europe-north1'de yok. Veri Firestore'da, europe-north1'de.
 - ✅ Kod hazır: toplayıcılar, testler (37/37), GitHub Actions iş akışı
 - ⏳ Aşağıdaki adımlar senin hesabın ya da onayın gerektirdiği için sende
 

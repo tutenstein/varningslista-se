@@ -7,7 +7,9 @@ import { POLISEN_ATTRIBUTION } from "./sources/polisen";
 import { SMHI_ATTRIBUTION } from "./sources/smhi";
 import { TRAFIKVERKET_ATTRIBUTION } from "./sources/trafikverket";
 
-export const REGION = "europe-north1";
+// Cloud Scheduler is not available in europe-north1, so the functions run in
+// europe-west1; Firestore (the data) lives in europe-north1.
+export const REGION = "europe-west1";
 const TIME_ZONE = "Europe/Stockholm";
 
 setGlobalOptions({ region: REGION, maxInstances: 1, memory: "256MiB" });
