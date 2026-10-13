@@ -48,15 +48,20 @@ Komut anahtarı soracak, yapıştır. Anahtarı henüz almadıysan `SAKNAS` yaz.
 
 1. https://console.cloud.google.com/iam-admin/serviceaccounts?project=varningslista-se → **Create service account**
    - Ad: `github-deploy`
-2. Şu rolleri ver:
-   - Firebase Admin
-   - Cloud Functions Admin
-   - Cloud Run Admin
-   - Cloud Scheduler Admin
-   - Secret Manager Admin
-   - Artifact Registry Administrator
-   - Service Account User
-   - Service Usage Consumer
+2. Şu rolleri ver. Bu set yalnızca `firebase deploy --only functions,firestore` için gereken yetkileri içeriyor; Hosting henüz yok.
+
+   | Rol | Neden |
+   |---|---|
+   | Cloud Functions Developer | Fonksiyonları oluşturmak ve güncellemek |
+   | Service Account User | Fonksiyonu çalışma hesabı (compute SA) adına deploy etmek; Google bunu her zaman şart koşuyor |
+   | Cloud Scheduler Admin | 2/5/10/30 dakikalık zamanlayıcıları oluşturmak ve güncellemek |
+   | Secret Manager Viewer | CLI, Trafikverket anahtarına fonksiyonun erişimi olup olmadığını kontrol ediyor |
+   | Firebase Rules Admin | `firestore.rules` yüklemek |
+   | Cloud Datastore Index Admin | `firestore.indexes.json` yüklemek |
+   | Service Usage Consumer | CLI, gerekli Google API'lerinin açık olduğunu kontrol ediyor |
+   | Artifact Registry Reader | CLI, eski container imajları için temizlik kuralının varlığını kontrol ediyor |
+
+   İlk GitHub deploy'unda bir yetki eksik çıkarsa, hata mesajı hangi yetkinin eksik olduğunu yazar. O zaman yalnızca o rolü ekleriz.
 3. Hesabı aç → **Keys → Add key → Create new key → JSON**. Dosya bilgisayarına iner.
 4. GitHub repo → **Settings → Secrets and variables → Actions → New repository secret**
    - Name: `FIREBASE_SERVICE_ACCOUNT`
