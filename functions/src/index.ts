@@ -1,6 +1,7 @@
 import { defineSecret } from "firebase-functions/params";
 import { logger, setGlobalOptions } from "firebase-functions";
 import { onSchedule } from "firebase-functions/scheduler";
+import { runPublishJob } from "./feeds";
 import { closeExpiredEvents, runPolisenJob, runSmhiJob, runTrafikverketJob } from "./jobs";
 import { runIngest } from "./lib/store";
 import { POLISEN_ATTRIBUTION } from "./sources/polisen";
@@ -44,5 +45,14 @@ export const closeExpired = onSchedule(
   async () => {
     const closed = await closeExpiredEvents();
     logger.info("closeExpired", { closed });
+  },
+);
+
+// Builds the compact public feeds the website reads (see feeds.ts).
+export const publishFeeds = onSchedule(
+  { schedule: "every 2 minutes", timeZone: TIME_ZONE, timeoutSeconds: 120, memory: "512MiB", retryCount: 0 },
+  async () => {
+    const stats = await runPublishJob();
+    logger.info("publishFeeds", stats);
   },
 );

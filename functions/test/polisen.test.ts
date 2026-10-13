@@ -67,11 +67,18 @@ describe("normalizePolisen", () => {
     expect(event.category).toBe("trafikolycka");
   });
 
-  it("marks the county centroid as county-level precision, not the incident location", () => {
-    const { event } = normalizePolisen(events[0]);
+  it("places the event at the kommun centre point instead of Polisen's county centroid", () => {
+    const { event, raw } = normalizePolisen(events[0]);
+    expect(event.geoPrecision).toBe("kommun");
     expect(event.geo).not.toBeNull();
-    expect(event.geoPrecision).toBe("lan");
+    expect(`${event.geo!.lat},${event.geo!.lng}`).not.toBe((raw as PolisenEvent).location.gps);
     expect(event.geohash).toHaveLength(9);
+  });
+
+  it("falls back to the county centroid for county-level notices", () => {
+    const raw = events.find((e) => e.type === "Sammanfattning natt")!;
+    const { event } = normalizePolisen(raw);
+    expect(event.geoPrecision).toBe("lan");
   });
 
   it("resolves county summaries to a län without a kommun", () => {

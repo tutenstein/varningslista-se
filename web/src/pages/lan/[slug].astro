@@ -1,0 +1,12 @@
+---
+import LanPage from "../../views/LanPage.astro";
+import { LANS, type Lan } from "../../lib/regions";
+
+export function getStaticPaths() {
+  return LANS.map((lan) => ({ params: { slug: lan.slug }, props: { lan } }));
+}
+
+const { lan } = Astro.props as { lan: Lan };
+---
+
+<LanPage lang="sv" lan={lan} />

@@ -18,6 +18,12 @@ describe("normalizeSmhi", () => {
     expect(first.event.groupId).toBe(String(warnings[0].id));
   });
 
+  it("keeps SMHI's English text for the English site", () => {
+    const [first] = normalizeSmhi(warnings[0]);
+    expect(first.event.en?.title).toContain("Skåne County");
+    expect(first.event.en?.summary).toContain("groundwater");
+  });
+
   it("leaves sea areas without a län", () => {
     const sea = normalizeSmhi(warnings[1]).filter((p) => !p.event.lanKod);
     expect(sea.length).toBeGreaterThan(0);

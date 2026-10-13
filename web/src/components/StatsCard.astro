@@ -1,0 +1,91 @@
+---
+// Static (build-time) yearly statistics from MCF + SCB, summed over the given kommuner.
+import stats from "../data/stats.json";
+import { t, type Lang } from "../i18n";
+import { number } from "../lib/format";
+
+interface Props {
+  lang: Lang;
+  name: string;
+  codes: string[];
+}
+
+type KommunStats = {
+  pop: number | null;
+  events: (number | null)[];
+  buildingFires: (number | null)[];
+  trafficAccidents: (number | null)[];
+};
+
+const { lang, name, codes } = Astro.props;
+const tr = t(lang);
+const data = stats as unknown as { years: string[]; populationYear?: string; kommuner: Record<string, KommunStats> };
+const rows = codes.map((c) => data.kommuner[c]).filter(Boolean);
+const sum = (key: "events" | "buildingFires" | "trafficAccidents") =>
+  data.years.map((_, i) => rows.reduce((acc, r) => acc + (r[key][i] ?? 0), 0));
+
+const events = sum("events");
+const fires = sum("buildingFires");
+const traffic = sum("trafficAccidents");
+const pop = rows.reduce((acc, r) => acc + (r.pop ?? 0), 0);
+const lastIdx = data.years.length - 1;
+const max = Math.max(...events, 1);
+const hasData = rows.length > 0 && data.years.length > 0;
+---
+
+{
+  hasData && (
+    <section class="section card" aria-labelledby="stats-title">
+      <h2 id="stats-title" style="font-size:1.2rem;margin-bottom:4px">
+        {tr.statsTitle(name)}
+      </h2>
+      <p class="muted" style="margin:0 0 16px">
+        {tr.statsLead}
+      </p>
+      <div class="stat-row">
+        <div>
+          <div class="stat-num">{number(lang, events[lastIdx])}</div>
+          <div class="stat-label">
+            {tr.statsEvents} {data.years[lastIdx]}
+          </div>
+        </div>
+        {pop > 0 && (
+          <div>
+            <div class="stat-num">{number(lang, (events[lastIdx] / pop) * 1000, 1)}</div>
+            <div class="stat-label">{tr.statsPer1000}</div>
+          </div>
+        )}
+        <div>
+          <div class="stat-num">{number(lang, fires[lastIdx])}</div>
+          <div class="stat-label">
+            {tr.statsBuildingFires} {data.years[lastIdx]}
+          </div>
+        </div>
+        <div>
+          <div class="stat-num">{number(lang, traffic[lastIdx])}</div>
+          <div class="stat-label">
+            {tr.statsTrafficAccidents} {data.years[lastIdx]}
+          </div>
+        </div>
+        {pop > 0 && (
+          <div>
+            <div class="stat-num">{number(lang, pop)}</div>
+            <div class="stat-label">
+              {tr.population} {data.populationYear}
+            </div>
+          </div>
+        )}
+      </div>
+      <div class="year-bars" role="img" aria-label={`${tr.statsEvents}: ${data.years.map((y, i) => `${y}: ${events[i]}`).join(", ")}`}>
+        {data.years.map((y, i) => (
+          <div class="year-bar">
+            <div class="fill" style={`height:${Math.round((events[i] / max) * 100)}%`} />
+            <span class="v">{number(lang, events[i])}</span>
+            <span class="y">{y}</span>
+          </div>
+        ))}
+      </div>
+      <p class="hint">{tr.statsSource}</p>
+    </section>
+  )
+}

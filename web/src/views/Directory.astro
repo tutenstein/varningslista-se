@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { routes, t, type Lang } from "../i18n";
+import { KOMMUNS, lanByCode } from "../lib/regions";
+
+const { lang } = Astro.props as { lang: Lang };
+const tr = t(lang);
+const byLetter = new Map<string, typeof KOMMUNS>();
+for (const k of KOMMUNS) {
+  const letter = k.name[0].toUpperCase();
+  byLetter.set(letter, [...(byLetter.get(letter) ?? []), k]);
+}
+const letters = [...byLetter.keys()].sort((a, b) => a.localeCompare(b, "sv"));
+---
+
+<Layout lang={lang} title={`${tr.directoryTitle} – ${tr.siteName}`} description={tr.directoryLead}>
+  <div class="page-head">
+    <h1>{tr.directoryTitle}</h1>
+    <p class="lead">{tr.directoryLead}</p>
+  </div>
+  <nav class="crumbs" aria-label={lang === "sv" ? "Bokstäver" : "Letters"} style="margin-bottom:20px;font-size:1rem;gap:10px">
+    {letters.map((l) => <a href={`#${l}`}>{l}</a>)}
+  </nav>
+  <div class="letters">
+    {
+      letters.map((letter) => (
+        <section class="letter" id={letter}>
+          <h2>{letter}</h2>
+          <ul class="letter-list">
+            {byLetter.get(letter)!.map((k) => (
+              <li>
+                <a href={routes.kommun(lang, k.slug)}>{k.name}</a>{" "}
+                <span class="muted">{lanByCode.get(k.lan)?.short}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</Layout>

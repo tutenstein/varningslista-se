@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LiveFeed from "../components/LiveFeed";
+import Icon from "../components/Icon";
+import { routes, t, type Lang } from "../i18n";
+import { LANS } from "../lib/regions";
+
+const { lang } = Astro.props as { lang: Lang };
+const tr = t(lang);
+const sv = lang === "sv";
+---
+
+<Layout lang={lang} title={tr.homeTitle} description={tr.tagline} prefetchFeed>
+  <div class="page-head">
+    <h1>{tr.homeLead}</h1>
+    <p class="lead">{tr.tagline}</p>
+  </div>
+
+  <LiveFeed client:load lang={lang} />
+
+  <section class="section" aria-labelledby="lan-title">
+    <h2 id="lan-title">{tr.countiesTitle}</h2>
+    <ul class="link-grid">
+      {
+        LANS.map((l) => (
+          <li>
+            <a href={routes.lan(lang, l.slug)}>
+              <span>{l.name}</span>
+              <Icon name="chevron" size={16} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="how-title">
+    <h2 id="how-title">{sv ? "Så fungerar det" : "How it works"}</h2>
+    <div class="info-grid">
+      <div class="card">
+        <h3>{sv ? "Öppna källor" : "Open sources"}</h3>
+        <p>
+          {
+            sv
+              ? "Händelser hämtas från Polisens öppna API, Trafikverkets trafikinformation och SMHI:s varningar."
+              : "Incidents come from the Swedish Police open API, the Swedish Transport Administration's traffic information and SMHI's warnings."
+          }
+        </p>
+      </div>
+      <div class="card">
+        <h3>{sv ? "Uppdateras löpande" : "Continuously updated"}</h3>
+        <p>
+          {
+            sv
+              ? "Trafikinformation hämtas varannan minut, polisens händelser var femte. Polisen publicerar ofta med några timmars fördröjning."
+              : "Traffic information is fetched every two minutes and police notices every five. The police often publish with a delay of a few hours."
+          }
+        </p>
+      </div>
+      <div class="card">
+        <h3>{sv ? "Inte en myndighet" : "Not an authority"}</h3>
+        <p>
+          {tr.notOfficial} <strong>{tr.emergency}.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

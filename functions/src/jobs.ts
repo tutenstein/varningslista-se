@@ -6,7 +6,14 @@ import { fetchSituations, normalizeSituation } from "./sources/trafikverket";
 
 // ---------------------------------------------------------------- Polisen
 
+/**
+ * Bump when normalization changes in a way that should be applied to already
+ * stored history (e.g. 2 = kommun centre points). The backfill then runs again.
+ */
+export const BACKFILL_VERSION = 2;
+
 interface BackfillState {
+  version?: number;
   pending: string[]; // days "YYYY-MM-DD", newest first
   done: { day: string; count: number }[];
   startedAt: Date;
@@ -48,9 +55,9 @@ export async function runPolisenJob(now = new Date()): Promise<RunStats> {
   };
 
   let backfill = state.backfill;
-  if (!backfill) {
+  if (!backfill || (backfill.version ?? 1) < BACKFILL_VERSION) {
     const days = Number(process.env.BACKFILL_DAYS ?? 14);
-    backfill = { pending: backfillDays(now, days), done: [], startedAt: now, completedAt: null };
+    backfill = { version: BACKFILL_VERSION, pending: backfillDays(now, days), done: [], startedAt: now, completedAt: null };
   }
 
   if (backfill.pending.length > 0) {

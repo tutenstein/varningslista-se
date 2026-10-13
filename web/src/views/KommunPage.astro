@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LiveFeed from "../components/LiveFeed";
+import StatsCard from "../components/StatsCard.astro";
+import Icon from "../components/Icon";
+import { routes, t, type Lang } from "../i18n";
+import { KOMMUNS, lanByCode, type Kommun } from "../lib/regions";
+
+const { lang, kommun } = Astro.props as { lang: Lang; kommun: Kommun };
+const tr = t(lang);
+const lan = lanByCode.get(kommun.lan)!;
+const neighbours = KOMMUNS.filter((k) => k.lan === kommun.lan && k.code !== kommun.code);
+---
+
+<Layout
+  lang={lang}
+  title={`${tr.kommunTitle(kommun.name)} – ${tr.siteName}`}
+  description={tr.kommunLead(kommun.name, lan.name)}
+  prefetchFeed
+>
+  <div class="page-head">
+    <nav class="crumbs" aria-label="breadcrumb">
+      <a href={routes.home(lang)}>{tr.allSweden}</a><span aria-hidden="true">›</span>
+      <a href={routes.lan(lang, lan.slug)}>{lan.name}</a><span aria-hidden="true">›</span>
+      <span>{kommun.name}</span>
+    </nav>
+    <h1>{tr.kommunTitle(kommun.name)}</h1>
+    <p class="lead">{tr.kommunLead(kommun.name, lan.name)}</p>
+  </div>
+
+  <LiveFeed client:load lang={lang} kommun={kommun.code} />
+
+  <StatsCard lang={lang} name={kommun.name} codes={[kommun.code]} />
+
+  {
+    neighbours.length > 0 && (
+      <section class="section" aria-labelledby="near-title">
+        <h2 id="near-title">{tr.kommunerIn(lan.name)}</h2>
+        <ul class="link-grid">
+          {neighbours.map((k) => (
+            <li>
+              <a href={routes.kommun(lang, k.slug)}>
+                <span>{k.name}</span>
+                <Icon name="chevron" size={16} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</Layout>

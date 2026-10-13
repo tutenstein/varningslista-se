@@ -1,0 +1,139 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SourceStatus from "../components/SourceStatus";
+import { t, type Lang } from "../i18n";
+
+const { lang } = Astro.props as { lang: Lang };
+const tr = t(lang);
+const sv = lang === "sv";
+
+const sources = [
+  {
+    name: sv ? "Polismyndigheten – händelser" : "Swedish Police – incident notices",
+    url: "https://polisen.se/om-polisen/om-webbplatsen/oppna-data/",
+    data: sv
+      ? "Trafikolyckor, bränder, räddningsinsatser, försvunna personer m.m. Brottsnotiser visas inte."
+      : "Traffic accidents, fires, rescue operations, missing persons etc. Crime notices are not shown.",
+    freq: sv ? "Var 5:e minut. Polisen publicerar ofta några timmar efter händelsen." : "Every 5 minutes. The police often publish a few hours after the incident.",
+    loc: sv ? "Kommun (vi visar kommunens mittpunkt)" : "Municipality (shown at its centre point)",
+    license: sv ? "Öppna data, källa: Polismyndigheten" : "Open data, source: Polismyndigheten",
+  },
+  {
+    name: sv ? "Trafikverket – trafikinformation" : "Swedish Transport Administration – traffic information",
+    url: "https://data.trafikverket.se/",
+    data: sv
+      ? "Olyckor, fordonsbränder, hinder, avstängda vägar och andra störningar på vägarna. Planerade vägarbeten visas inte i listan."
+      : "Accidents, vehicle fires, obstructions, closed roads and other road disruptions. Planned roadworks are not listed.",
+    freq: sv ? "Varannan minut" : "Every 2 minutes",
+    loc: sv ? "Exakt position och vägnummer" : "Exact position and road number",
+    license: "CC0 1.0",
+  },
+  {
+    name: sv ? "SMHI – vädervarningar" : "SMHI – weather warnings",
+    url: "https://www.smhi.se/data/om-smhis-data/villkor-for-anvandning",
+    data: sv ? "Gula, orangea och röda varningar samt meddelanden (t.ex. risk för vattenbrist)." : "Yellow, orange and red warnings and messages (e.g. risk of water shortage).",
+    freq: sv ? "Var 10:e minut" : "Every 10 minutes",
+    loc: sv ? "Län eller havsområde" : "County or sea area",
+    license: sv ? "Fri användning, innehållet återges oförändrat. Källa: SMHI" : "Free to use, content shown unaltered. Source: SMHI",
+  },
+  {
+    name: sv ? "MCF och SCB – statistik" : "MCF and Statistics Sweden – statistics",
+    url: "https://statistik.mcf.se/",
+    data: sv ? "Räddningstjänstens insatser per kommun och år samt folkmängd." : "Rescue service call-outs per municipality and year, and population.",
+    freq: sv ? "Årligen (hämtas dagligen)" : "Yearly (checked daily)",
+    loc: sv ? "Kommun" : "Municipality",
+    license: sv ? "Officiell statistik" : "Official statistics",
+  },
+];
+---
+
+<Layout lang={lang} title={`${tr.aboutTitle} – ${tr.siteName}`} description={tr.notOfficial}>
+  <div class="page-head">
+    <h1>{tr.aboutTitle}</h1>
+    <p class="lead">{tr.tagline}.</p>
+  </div>
+
+  <div class="prose">
+    <p>
+      {
+        sv
+          ? "Varningslista samlar olyckor, bränder, räddningsinsatser, trafikstörningar och vädervarningar från öppna myndighetskällor på ett ställe – sorterat på tid och plats, med karta och filter för län, kommun och avstånd."
+          : "Varningslista brings together accidents, fires, rescue operations, traffic disruptions and weather warnings from open government sources in one place – sorted by time and place, with a map and filters for county, municipality and distance."
+      }
+    </p>
+    <p>
+      <strong>{tr.notOfficial}</strong>
+      {
+        sv
+          ? " Uppgifterna kan vara försenade, ofullständiga eller ändras i efterhand. Kontrollera alltid hos källan och fatta inte säkerhetsbeslut utifrån den här sidan."
+          : " Information may be delayed, incomplete or change afterwards. Always check the original source and don't base safety decisions on this site."
+      }
+      <strong> {tr.emergency}.</strong>
+    </p>
+
+    <h2>{tr.sourceStatusTitle}</h2>
+    <SourceStatus client:visible lang={lang} />
+
+    <h2>{tr.sourcesTitle}</h2>
+  </div>
+  <div class="table-wrap">
+    <table class="sources">
+      <thead>
+        <tr>
+          <th>{sv ? "Källa" : "Source"}</th>
+          <th>{sv ? "Innehåll" : "Content"}</th>
+          <th>{sv ? "Uppdatering" : "Updates"}</th>
+          <th>{sv ? "Plats" : "Location"}</th>
+          <th>{sv ? "Licens" : "Licence"}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          sources.map((s) => (
+            <tr>
+              <td>
+                <a href={s.url} rel="noopener">
+                  {s.name}
+                </a>
+              </td>
+              <td>{s.data}</td>
+              <td>{s.freq}</td>
+              <td>{s.loc}</td>
+              <td>{s.license}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="prose">
+    <h2>{sv ? "Täckning och begränsningar" : "Coverage and limitations"}</h2>
+    <ul>
+      <li>
+        {
+          sv
+            ? "Det finns inget öppet, rikstäckande flöde över kommunala räddningstjänstens insatser. Bränder och räddningsinsatser syns här när Polisen eller Trafikverket rapporterar dem."
+            : "There is no open, nationwide feed of municipal rescue service call-outs. Fires and rescue operations appear here when the police or the Transport Administration report them."
+        }
+      </li>
+      <li>
+        {
+          sv
+            ? "Polisens händelser anges per kommun. Vi visar dem vid kommunens mittpunkt och markerar platsen som ungefärlig (≈)."
+            : "Police notices are given per municipality. We place them at the municipality's centre and mark the location as approximate (≈)."
+        }
+      </li>
+      <li>{sv ? "Historiken sträcker sig 30 dagar bakåt." : "History goes back 30 days."}</li>
+    </ul>
+
+    <h2>{sv ? "Integritet" : "Privacy"}</h2>
+    <p>
+      {
+        sv
+          ? "Vi använder inga spårningscookies. Om du använder ”Nära mig” stannar din position i webbläsaren – den skickas aldrig till oss och sparas inte. Vi visar inga adresser eller personuppgifter."
+          : "We use no tracking cookies. If you use “Near me”, your location stays in your browser – it is never sent to us or stored. We show no addresses or personal data."
+      }
+    </p>
+  </div>
+</Layout>

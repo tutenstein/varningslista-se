@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LiveFeed from "../components/LiveFeed";
+import StatsCard from "../components/StatsCard.astro";
+import Icon from "../components/Icon";
+import { routes, t, type Lang } from "../i18n";
+import { KOMMUNS, type Lan } from "../lib/regions";
+
+const { lang, lan } = Astro.props as { lang: Lang; lan: Lan };
+const tr = t(lang);
+const kommuner = KOMMUNS.filter((k) => k.lan === lan.code);
+---
+
+<Layout lang={lang} title={`${tr.lanTitle(lan.name)} – ${tr.siteName}`} description={tr.lanLead(lan.name)} prefetchFeed>
+  <div class="page-head">
+    <nav class="crumbs" aria-label="breadcrumb">
+      <a href={routes.home(lang)}>{tr.allSweden}</a><span aria-hidden="true">›</span><span>{lan.name}</span>
+    </nav>
+    <h1>{tr.lanTitle(lan.name)}</h1>
+    <p class="lead">{tr.lanLead(lan.name)}</p>
+  </div>
+
+  <LiveFeed client:load lang={lang} lan={lan.code} />
+
+  <StatsCard lang={lang} name={lan.name} codes={kommuner.map((k) => k.code)} />
+
+  <section class="section" aria-labelledby="kommuner-title">
+    <h2 id="kommuner-title">{tr.kommunerIn(lan.name)}</h2>
+    <ul class="link-grid">
+      {
+        kommuner.map((k) => (
+          <li>
+            <a href={routes.kommun(lang, k.slug)}>
+              <span>{k.name}</span>
+              <Icon name="chevron" size={16} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

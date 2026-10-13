@@ -56,6 +56,9 @@ export interface NormalizedEvent {
   geo: GeoPoint | null;
   geohash: string | null;
   geoPrecision: GeoPrecision;
+
+  /** English text when the source publishes one (SMHI); otherwise null. */
+  en: { title: string; summary: string | null } | null;
 }
 
 /** Normalized event plus the untouched source payload (stored separately). */

@@ -1,0 +1,122 @@
+---
+import "../styles/global.css";
+import Icon from "../components/Icon";
+import { alternatePath, routes, t, type Lang } from "../i18n";
+import { feedUrl } from "../lib/feed";
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** Start fetching the live feed before the island hydrates. */
+  prefetchFeed?: boolean;
+}
+
+const { lang, title, description, prefetchFeed = false } = Astro.props;
+const tr = t(lang);
+const path = Astro.url.pathname;
+const other: Lang = lang === "sv" ? "en" : "sv";
+const svPath = lang === "sv" ? path : alternatePath(path, "sv");
+const enPath = lang === "en" ? path : alternatePath(path, "en");
+const site = Astro.site!;
+const canonical = new URL(path, site).toString();
+const navItems = [
+  { href: routes.home(lang), label: tr.nav.events },
+  { href: routes.directory(lang), label: tr.nav.directory },
+  { href: routes.about(lang), label: tr.nav.about },
+];
+const isCurrent = (href: string) => (href === routes.home(lang) ? path === href : path.startsWith(href));
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="sv" href={new URL(svPath, site).toString()} />
+    <link rel="alternate" hreflang="en" href={new URL(enPath, site).toString()} />
+    <link rel="alternate" hreflang="x-default" href={new URL(svPath, site).toString()} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === "sv" ? "sv_SE" : "en_GB"} />
+    <meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    {
+      prefetchFeed && (
+        <>
+          <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin />
+          <script is:inline define:vars={{ url: feedUrl("live") }}>
+            window.__vlLive = fetch(url, { cache: "no-store" }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
+            window.__vlLive.catch(() => {});
+          </script>
+        </>
+      )
+    }
+  </head>
+  <body>
+    <a class="skip" href="#main">{tr.skip}</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href={routes.home(lang)} aria-label={tr.siteName}>
+          <svg class="brand-mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
+            <rect width="32" height="32" rx="9" fill="var(--brand)"></rect>
+            <path d="M9.5 10.5 16 22l6.5-11.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="16" cy="8" r="1.9" fill="#fff"></circle>
+          </svg>
+          <span class="brand-name">{tr.siteName}</span>
+        </a>
+        <nav class="nav" aria-label={lang === "sv" ? "Huvudmeny" : "Main menu"}>
+          {
+            navItems.map((n) => (
+              <a href={n.href} aria-current={isCurrent(n.href) ? "page" : undefined}>
+                {n.label}
+              </a>
+            ))
+          }
+        </nav>
+        <div class="header-actions">
+          <a class="call-112" href="tel:112" title={tr.emergency}>
+            <Icon name="phone" size={15} />
+            <span>112</span>
+          </a>
+          <a class="lang-switch" href={other === "en" ? enPath : svPath} hreflang={other} lang={other}>
+            {other === "en" ? "EN" : "SV"}
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <p class="footer-brand">{tr.siteName}</p>
+          <p class="muted">{tr.notOfficial}</p>
+          <p class="footer-112"><strong>{tr.emergency}</strong></p>
+        </div>
+        <div>
+          <p class="muted small">
+            {lang === "sv" ? "Data från" : "Data from"} Polismyndigheten, Trafikverket {lang === "sv" ? "och" : "and"} SMHI.
+            {lang === "sv" ? "Statistik från" : "Statistics from"} MCF {lang === "sv" ? "och" : "and"} SCB.
+            {lang === "sv" ? "Karta" : "Map"} © OpenFreeMap, OpenMapTiles, OpenStreetMap.
+          </p>
+          <p class="small">
+            <a href={routes.about(lang)}>{tr.nav.about}</a> ·
+            <a href={svPath} hreflang="sv" lang="sv">Svenska</a> ·
+            <a href={enPath} hreflang="en" lang="en">English</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

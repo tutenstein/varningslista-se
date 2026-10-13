@@ -1,6 +1,7 @@
 import { fetchJson } from "../lib/http";
 import { encodeGeohash } from "../lib/geohash";
 import { Category, eventId, ParsedEvent } from "../lib/model";
+import { KOMMUN_GEO } from "../data/kommunGeo";
 import { findKommun, findLan } from "../lib/regions";
 
 /**
@@ -132,10 +133,19 @@ export function normalizePolisen(raw: PolisenEvent): ParsedEvent {
   const kommun = findKommun(placeFromTitle) ?? findKommun(raw.location?.name);
   const lan = kommun ? { kod: kommun.lanKod, namn: kommun.lanNamn } : findLan(raw.location?.name) ?? findLan(placeFromTitle);
 
-  // The coordinate belongs to `location.name` (county or municipality centroid), never the incident.
-  const geo = parseGps(raw.location?.gps);
+  // Polisen's coordinate is the centroid of `location.name` (usually the county), never the
+  // incident. When the title names a kommun, its centre point is a better approximation.
+  const kommunPoint = kommun ? KOMMUN_GEO[kommun.kod] : undefined;
+  const polisenPoint = parseGps(raw.location?.gps);
   const locationIsLan = /län$/iu.test(raw.location?.name ?? "");
-  const geoPrecision = geo ? (locationIsLan ? "lan" : findKommun(raw.location?.name) ? "kommun" : "omrade") : "saknas";
+  const geo = kommunPoint ? { lat: kommunPoint[0], lng: kommunPoint[1] } : polisenPoint;
+  const geoPrecision = kommunPoint
+    ? "kommun"
+    : polisenPoint
+      ? locationIsLan
+        ? "lan"
+        : "omrade"
+      : "saknas";
 
   const startTime = (published && parseIncidentTime(raw.name, published)) ?? published ?? new Date();
 
@@ -166,6 +176,7 @@ export function normalizePolisen(raw: PolisenEvent): ParsedEvent {
       geo,
       geohash: geo ? encodeGeohash(geo.lat, geo.lng) : null,
       geoPrecision,
+      en: null,
     },
   };
 }

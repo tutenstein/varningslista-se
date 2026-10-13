@@ -138,6 +138,7 @@ export function normalizeSituation(situation: TrafikverketSituation, now = new D
         geo,
         geohash: geo ? encodeGeohash(geo.lat, geo.lng) : null,
         geoPrecision: geo ? "exakt" : "saknas",
+        en: null,
       },
     };
   });

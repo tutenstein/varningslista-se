@@ -83,6 +83,13 @@ export function normalizeSmhi(warning: SmhiWarning): ParsedEvent[] {
       .map((d) => d.text?.sv)
       .filter(Boolean)
       .join("\n\n");
+    const descriptionEn = (area.descriptions ?? [])
+      .map((d) => d.text?.en)
+      .filter(Boolean)
+      .join("\n\n");
+    const levelEn = area.warningLevel?.en ?? "";
+    const whatEn = area.eventDescription?.en ?? warning.event?.en ?? "";
+    const whereEn = (area.affectedAreas ?? []).map((a) => a.en).filter(Boolean).join(", ");
     const published = toDate(area.published);
     // Polygons can be large; keep them out of the stored raw payload.
     const { area: _polygon, ...areaWithoutPolygon } = area;
@@ -114,6 +121,9 @@ export function normalizeSmhi(warning: SmhiWarning): ParsedEvent[] {
         geo,
         geohash: geo ? encodeGeohash(geo.lat, geo.lng) : null,
         geoPrecision: geo ? "omrade" : "saknas",
+        en: whatEn
+          ? { title: [levelEn, whatEn, whereEn].filter(Boolean).join(" – "), summary: descriptionEn || null }
+          : null,
       },
     };
   });

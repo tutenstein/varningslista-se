@@ -12,3 +12,10 @@ functions/lib/
 service-account*.json
 *-sa.json
 *firebase-adminsdk*.json
+
+# Web build output
+web/dist/
+web/.astro/
+
+# Local Claude Code session config
+.claude/

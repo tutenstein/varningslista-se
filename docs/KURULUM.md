@@ -1,13 +1,11 @@
 # Kurulum – senin yapman gerekenler
 
 Durum (2026-10-13):
-- ✅ Firebase projesi oluşturuldu: **`varningslista-se`** (hesap: slhmtnn06@gmail.com)
-- ✅ Blaze, Firestore `(default)` europe-north1, Trafikverket anahtarı (Secret Manager)
-- ℹ️ Fonksiyonlar **europe-west1**'de çalışıyor, çünkü Cloud Scheduler europe-north1'de yok. Veri Firestore'da, europe-north1'de.
-- ✅ Kod hazır: toplayıcılar, testler (37/37), GitHub Actions iş akışı
-- ⏳ Aşağıdaki adımlar senin hesabın ya da onayın gerektirdiği için sende
-
-Sıra önemli: 1 → 2 → 3 bitince ilk deploy'u ben yaparım. 4 ve 5 bitince deploy'lar GitHub üzerinden otomatik olur.
+- ✅ Firebase projesi `varningslista-se`, Blaze, Firestore `(default)` europe-north1, Trafikverket anahtarı
+- ✅ Fonksiyonlar **europe-west1**'de (Cloud Scheduler europe-north1'de yok); veri europe-north1'de
+- ✅ Site yayında: https://varningslista-se.web.app
+- ✅ GitHub reposu ve `FIREBASE_SERVICE_ACCOUNT` secret'ı
+- ⏳ **Açık:** europe-north1'deki işlevsiz fonksiyonların silinmesi (adım 7), Hosting rolü (adım 5), iletişim adresi (adım 6)
 
 ---
 
@@ -48,7 +46,7 @@ Komut anahtarı soracak, yapıştır. Anahtarı henüz almadıysan `SAKNAS` yaz.
 
 1. https://console.cloud.google.com/iam-admin/serviceaccounts?project=varningslista-se → **Create service account**
    - Ad: `github-deploy`
-2. Şu rolleri ver. Bu set yalnızca `firebase deploy --only functions,firestore` için gereken yetkileri içeriyor; Hosting henüz yok.
+2. Şu rolleri ver. Bu set yalnızca `firebase deploy --only functions,firestore,hosting` için gereken yetkileri içeriyor.
 
    | Rol | Neden |
    |---|---|
@@ -60,6 +58,7 @@ Komut anahtarı soracak, yapıştır. Anahtarı henüz almadıysan `SAKNAS` yaz.
    | Cloud Datastore Index Admin | `firestore.indexes.json` yüklemek |
    | Service Usage Consumer | CLI, gerekli Google API'lerinin açık olduğunu kontrol ediyor |
    | Artifact Registry Reader | CLI, eski container imajları için temizlik kuralının varlığını kontrol ediyor |
+   | **Firebase Hosting Admin** | Web sitesini yayınlamak (site eklendiği için yeni) |
 
    İlk GitHub deploy'unda bir yetki eksik çıkarsa, hata mesajı hangi yetkinin eksik olduğunu yazar. O zaman yalnızca o rolü ekleriz.
 3. Hesabı aç → **Keys → Add key → Create new key → JSON**. Dosya bilgisayarına iner.
@@ -75,6 +74,14 @@ Komut anahtarı soracak, yapıştır. Anahtarı henüz almadıysan `SAKNAS` yaz.
 - `functions/.env` içindeki `kontakt@varningslista.se` yer tutucusunu gerçek bir iletişim adresiyle değiştir. Polisen kuralları User-Agent'ta ulaşılabilir bir adres istiyor.
 - Alan adı ve marka adı (varningslista.se çalışma adı).
 
+## 7. europe-north1'deki işlevsiz fonksiyonları sil
+
+İlk deploy denemesinden europe-north1'de zamanlayıcısız dört fonksiyon kaldı. CLI bunları silemiyor, çünkü o bölgede Cloud Scheduler yok. Silinmedikleri sürece her tam deploy, GitHub Actions dahil, sonunda hata verir.
+
+1. https://console.cloud.google.com/functions/list?project=varningslista-se
+2. **Region = europe-north1** olan `ingestPolisen`, `ingestSmhi`, `ingestTrafikverket` ve `closeExpired` fonksiyonlarını seç → **Delete**
+3. ⚠️ europe-west1 olanlara dokunma.
+
 ## İsteğe bağlı
 
 - Yerel Firebase CLI'ın eski (13.34). Güncellemek için:
@@ -85,13 +92,7 @@ npm install -g firebase-tools
 
 ---
 
-## Benim sonraki adımlarım (1–3 bitince)
+## Backfill'i ve akışları yeniden kurmak
 
-1. İlk deploy'u bu makineden yaparım. Bu, gerekli Google API'lerini de açar.
-2. İlk çalıştırmalarda backfill başlar: son 14 gün, her 5 dakikada 1 gün, yaklaşık 70 dakika.
-3. `sources/*` belgelerinden çalışmayı kontrol ederim: son başarılı çalışma, hata sayısı, yazılan kayıt sayısı.
-4. Repo hazır olunca push ederim ve GitHub Actions deploy'unu doğrularım.
-
-## Backfill'i yeniden başlatmak
-
-Firestore → `ingest_state/polisen` belgesinde `backfill` alanını sil. Sonraki çalıştırma `BACKFILL_DAYS` (functions/.env) kadar günü yeniden kuyruğa alır.
+- Polisen geçmişi: `functions/src/jobs.ts` içinde `BACKFILL_VERSION` değerini artır ve deploy et. Sonraki çalıştırmalar `BACKFILL_DAYS` kadar günü yeniden çeker.
+- Site akışları: `functions/src/feeds.ts` içinde `FEED_VERSION` değerini artır ve deploy et. Sonraki çalıştırma akışları baştan kurar.
